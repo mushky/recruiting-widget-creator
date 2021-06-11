@@ -1,0 +1,21 @@
+{
+  "name": "widget-creator",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  },
+  "nodemonConfig": {
+    "ext": "js,json",
+    "ignore": [
+      "widget-data.json"
+    ],
+    "verbose": false
+  }
+}
