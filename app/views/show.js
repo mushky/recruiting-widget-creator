@@ -1,6 +1,4 @@
-export default function show(locals) {
-  const { widget } = locals;
-
+export default function show({ widget }) {
   return `
     <table class="table">
       <tr><td>ID</td><td>${widget.id}</td></tr>

@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const widget = Widget.find(req.params.id);
-  return res.send(layout({ title: 'success', widget }, show));
+  return res.send(layout({ title: `Widget #${widget.id}`, widget }, show));
 });
 
 export default router;
