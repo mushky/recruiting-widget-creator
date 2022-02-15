@@ -7,6 +7,6 @@ export default function show({ widget }) {
       <tr><td>Active</td><td>${widget.active.toString()}</td></tr>
     </table>
 
-    <p><a href="http://www.localhost:3000">Back</p>
+    <p><a href="/">Back</p>
   `;
 }

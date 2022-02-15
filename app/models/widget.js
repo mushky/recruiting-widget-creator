@@ -26,7 +26,7 @@ export default class Widget {
       this.id = highestId + 1;
     }
     const existingIndex = records.findIndex(r => r.id === this.id);
-    
+    this.validateForm()
     if (existingIndex > -1) {
       records.splice(existingIndex, 1, this)
     } else {
@@ -34,6 +34,42 @@ export default class Widget {
     }
 
     db.write(records);
+  }
+
+  validateForm() {  
+    console.log('validateform')
+    const errors = [];
+
+    if (this.validateForDuplicateName()) {
+      errors.push(`Widget with name ${this.name} already exists.`)
+    }
+
+    console.log('first if statement');
+
+    if (this.validateNameNotEmpty()) {
+      errors.push(`Name cannot be empty`)
+    }
+
+    console.log('sec if statement');
+
+
+    if (this.validatePurposeNotEmptyIfActiveTrue()) {
+      errors.push(`Purpose cannot be empty while active is true`)
+    }
+    
+    console.log('third if statement');
+
+
+    console.log(errors)
+    if (errors.length > 0) {
+      throw (
+        {
+          error: errors, 
+          name: `${this.name}`, purpose: `${this.purpose}`, active: this.active
+        }
+      )
+    }
+
   }
 
   // Validate for duplicate names
@@ -46,18 +82,17 @@ export default class Widget {
   }
 
   // Validate name is not empty.
-  validateNameNotEmpty(name) {
-    if (name.length <= 0) {
+  validateNameNotEmpty() {
+    if (this.name.length <= 0) {
       return true
     }
   }
 
   // Validate if active is true then purpose cannot be empty.
-  validatePurposeNotEmptyIfActiveTrue(active, purpose) {
-    if (active && purpose.length <= 0) {
+  validatePurposeNotEmptyIfActiveTrue() {
+    if (this.active && this.purpose.length <= 0) {
       return true
     }
   }
-
 
 }
