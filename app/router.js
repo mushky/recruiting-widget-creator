@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const widget = new Widget(req.body);
-  console.log(widget)
   try {
     widget.save();
   } catch (error) {

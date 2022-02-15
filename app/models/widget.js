@@ -37,30 +37,20 @@ export default class Widget {
   }
 
   validateForm() {  
-    console.log('validateform')
     const errors = [];
 
     if (this.validateForDuplicateName()) {
       errors.push(`Widget with name ${this.name} already exists.`)
     }
 
-    console.log('first if statement');
-
     if (this.validateNameNotEmpty()) {
       errors.push(`Name cannot be empty`)
     }
-
-    console.log('sec if statement');
-
 
     if (this.validatePurposeNotEmptyIfActiveTrue()) {
       errors.push(`Purpose cannot be empty while active is true`)
     }
     
-    console.log('third if statement');
-
-
-    console.log(errors)
     if (errors.length > 0) {
       throw (
         {
