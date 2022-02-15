@@ -27,9 +27,4 @@ router.get('/:id', (req, res) => {
   return res.send(layout({ title: `Widget #${widget.id}`, widget }, show));
 });
 
-
-
-
-
-
 export default router;
