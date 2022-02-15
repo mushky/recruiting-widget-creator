@@ -26,7 +26,7 @@ export default class Widget {
       this.id = highestId + 1;
     }
     const existingIndex = records.findIndex(r => r.id === this.id);
-
+    
     if (existingIndex > -1) {
       records.splice(existingIndex, 1, this)
     } else {
@@ -35,4 +35,29 @@ export default class Widget {
 
     db.write(records);
   }
+
+  // Validate for duplicate names
+  validateForDuplicateName() {
+    const records = db.read();
+    const existingName = records.find(r => r.name === this.name)
+    if (existingName) {
+      return true
+    }
+  }
+
+  // Validate name is not empty.
+  validateNameNotEmpty(name) {
+    if (name.length <= 0) {
+      return true
+    }
+  }
+
+  // Validate if active is true then purpose cannot be empty.
+  validatePurposeNotEmptyIfActiveTrue(active, purpose) {
+    if (active && purpose.length <= 0) {
+      return true
+    }
+  }
+
+
 }

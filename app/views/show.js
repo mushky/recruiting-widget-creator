@@ -6,5 +6,7 @@ export default function show({ widget }) {
       <tr><td>Purpose</td><td>${widget.purpose}</td></tr>
       <tr><td>Active</td><td>${widget.active.toString()}</td></tr>
     </table>
+
+    <p><a href="http://www.localhost:3000">Back</p>
   `;
 }
