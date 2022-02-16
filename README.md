@@ -12,3 +12,8 @@ I realize that there is middleware (express-validator) that can do a lot of the 
 
 1. I wasn't 100% sure if we could add any new npm packages to the project.
 2. The validations are simple and may not require adding a whole package to the project.
+
+
+### PR
+
+Responded to first batch of comments.
