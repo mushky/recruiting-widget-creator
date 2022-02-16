@@ -9,9 +9,16 @@ const router = express.Router();
 router.get('/', (req, res) => {
   return res.send(layout({ title: 'New Widget' }, form));
 })
+
 router.post('/', (req, res) => {
   const widget = new Widget(req.body);
-  widget.save();
+  try {
+    widget.save();
+  } catch (error) {
+    // handle error
+    res.send(layout(error, form))
+  }
+
   return res.redirect(`/${widget.id}`);
 });
 
